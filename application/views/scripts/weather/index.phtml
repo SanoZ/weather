@@ -1,16 +1,22 @@
 
-
+<!-- TODO check with Javascript -->
 <div id='weather'>
 	<div class='right' id="locationright">
-		<?php echo ucfirst($this->city);?><br>
+		<?php if (!empty($this->weather_today)){?>
+		<h2><?php echo ucwords($this->locationweather);?></h2>
+		<?php echo $this->weather_today['currentTemperature']; ?>F&deg;
+	<?php echo $this->weather_today['currentWeather']; ?>
+		<?php }else{?>
+			<h2>Sorry the city wasn't found</h2>
+		<?php }?><br>
 		<a onclick='changeLocation();' >Change location</a>
 		<div id='locationChange' id='locationform'>
 			<form name='locationdefault' action='/weather' method='POST'>
 				<input type='text' value='' id='textlocation' name='textlocation'>
 				<input type='submit' value='submit' type="submit"> 
-				<a onclick='saveLocation();' > Save for the future &nbsp; 
-				<a onclick='autoDetectLocation();' > AutoDetect &nbsp; 
-				<a onclick='closeChangeLocation();' > Cancel</a>
+				<!-- <a onclick='saveLocation();' > Save for the future &nbsp; 
+								<a onclick='autoDetectLocation();' > AutoDetect &nbsp; 
+								<a onclick='closeChangeLocation();' > Cancel</a> -->
 			</form>
 		</div>
 	</div>
@@ -18,8 +24,7 @@
 
 	<div class='right'> 
 	<br>
-	<?php echo $this->weather_today['currentTemperature']; ?>F&deg;
-<?php echo $this->weather_today['currentWeather']; ?> 	<!-- <a onclick='showTomorrow();'>Tomorrow</a>
+		<!-- <a onclick='showTomorrow();'>Tomorrow</a>
 			<div id='weathertomorrow' style="display:none;">
 			<a onclick='closeTomorrow();' >close</a><br>
 			// <?php echo $this->tomorrowDay.'.  '?>

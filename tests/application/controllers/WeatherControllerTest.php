@@ -15,13 +15,6 @@ class IndexControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 	                 ->registerPlugin(new Bugapp_Plugin_Initialize('development'));
 	        }
  
-	        public function testIndexActionShouldContainLoginForm()
-	        {
-	            $this->dispatch('/user');
-	            $this->assertAction('index');
-	            $this->assertQueryCount('form#loginForm', 1);
-	        }
-
 	        public function testWeatherFormShouldGoToWeatherPage()
 	        {
 	            $this->request->setMethod('POST')
@@ -32,16 +25,24 @@ class IndexControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 
 	            $this->resetRequest()
 	                 ->resetResponse();
+	            $this->assertQueryContentContains('h2', 'Sydney - Australia');
+	        }
+	
+			public function testGeoDetectionWeatherForm()
+	        {
+	           //TODO
+	        }
+	
+			public function testWrongCityWeatherForm()
+	        {
+	            $this->request->setMethod('POST')
+	                  ->setPost(array(
+	                      'textlocation' => 'Paris, Australia' 
+	                  ));
+	            $this->dispatch('/weather'); 
 
-	            $this->request->setMethod('GET')
-	                 ->setPost(array());
-	            $this->dispatch('/user/view');
-	            $this->assertRoute('default');
-	            $this->assertModule('default');
-	            $this->assertController('user');
-	            $this->assertAction('view');
-	            $this->assertNotRedirect();
-	            $this->assertQuery('dl');
-	            $this->assertQueryContentContains('h2', 'User: foobar');
+	            $this->resetRequest()
+	                 ->resetResponse();
+	            $this->assertQueryContentContains('h2', "Sorry, city wasn't found");
 	        }
 	    }

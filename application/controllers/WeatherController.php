@@ -10,11 +10,14 @@ class WeatherController extends Zend_Controller_Action{
 	public function indexAction(){
 
 		try {
-			$city= $country = "";
+			$city = $country = $this->view->weather_today = "";
 			$city_n_country = Zend_Controller_Action::_getParam('textlocation' );
-			if($city_n_country){
+			if($city_n_country && preg_match('/,/i',$city_n_country)){
 				list($city, $country) = explode(",",$city_n_country); 
 			}
+			
+			//TODO: the case where the user adds a wrong city
+			
 			
 			if(!empty($city) && !empty($country) ){ 
 				$weather_class = new Model_Weather($city,$country);

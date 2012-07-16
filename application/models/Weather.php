@@ -22,9 +22,9 @@ class Model_Weather
 	
 	
 	public function __construct($city="",$country=""){
-		// $this->city = ucfirst(strtolower(Common_Misc::myUrlEncode($city)
+		// TODO $this->city = ucfirst(strtolower(Common_Misc::myUrlEncode($city)
 	 	$this->_city = $city;
-		// $this->country = ucfirst(strtolower(Common::myUrlEncode($country)););
+		// TODO $this->country = ucfirst(strtolower(Common::myUrlEncode($country)););
 	 	$this->_country = $country;
 	}
 	
@@ -89,5 +89,5 @@ class Model_Weather
 	// 		//log error +
 	// 		throw new Exception ("Error - please try again.");
 	// 	}
-	}
+	// }
 }
