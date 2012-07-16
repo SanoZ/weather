@@ -1,0 +1,42 @@
+<div id="location_select" <?=Tag::seo($this->urlType)?>>
+	<span class="l_location" <?=Tag::seo($this->urlType)?>><?= ucfirst($this->locationweather)?></span>
+	<a onclick='changeLocationWeather();' <?=Tag::seo($this->urlType)?>>Change location</a>
+	<div id='locationChange' 	
+	<?php 
+			if($this->location=='Town not correct'){
+				echo 'style="display:block;"';
+			}else{
+				echo 'style="display:none;"';
+			}
+		?> id='locationform'>
+		<form name='locationdefault' action='' method='POST'>
+			&nbsp;<input type='text' value='<?php 
+			if($this->locationweather=='Town not correct'){
+				echo 'Town not correct';
+			}else{
+				echo '';
+			}
+			?>
+			' id='textlocation'>
+			<input type='button' onclick='checkFormWeather();' value='submit'> 
+			<a onclick='saveLocation();'  <?=Tag::seo($this->urlType)?>> Save for the future &nbsp; 
+			<a onclick='autoDetectLocation();' <?=Tag::seo($this->urlType)?> > AutoDetect &nbsp; 
+			<a onclick='closeChangeLocation();'  <?=Tag::seo($this->urlType)?>> Cancel</a>
+		</form>
+	</div>
+</div>
+<div id="location_weather" <?=Tag::seo($this->urlType)?>>
+	<span class="l_time"  <?=Tag::seo($this->urlType)?>><?=$this -> heure.":".$this -> minutes ?></span>
+	<span class="l_weather"  <?=Tag::seo($this->urlType)?>><?=$this -> currentTemperature ?>&deg; - <?=$this -> currentWeather ?></span>
+	<a onclick='showTomorrow();'  <?=Tag::seo($this->urlType)?>>Tomorrow</a>
+		<div id='weathertomorrow' style="display:none;">
+		<a onclick='closeTomorrow();' <?=Tag::seo($this->urlType)?> >close</a><br>
+		<?=$this -> tomorrowDay.'.  '?>
+		<?php if(!empty($this -> tomorrowIcon)){?>
+		<img src="<?=$this -> tomorrowIcon?>"  <?=Tag::seo($this->urlType)?>/><?php }?><br>
+		<?=$this -> tomorrowWeather?>
+		<br>min: <?=$this -> tomorrowLow ?>F&deg;
+		max: <?=$this -> tomorrowHigh?>F&deg;
+		</div>
+
+</div>

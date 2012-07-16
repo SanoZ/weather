@@ -1,0 +1,44 @@
+
+
+<?php include (WEBSITE_ROOT."/includes/js.inc.php"); ?>     
+<?php include(WEBSITE_ROOT."/includes/stylesheets.inc.php"); ?>
+
+<div id='weather'>
+	<div class='right' id="locationright">
+		<?= ucfirst($this->locationweather)?><br>
+		<a onclick='changeLocation();' >Change location</a>
+		<div id='locationChange' style="display:none;" id='locationform'>
+			<form name='locationdefault' action='' method='POST'>
+				&nbsp;<input type='text' value='' id='textlocation'>
+				<input type='button' onclick='checkForm();' value='submit'> 
+				<a onclick='saveLocation();' > Save for the future &nbsp; 
+				<a onclick='autoDetectLocation();' > AutoDetect &nbsp; 
+				<a onclick='closeChangeLocation();' > Cancel</a>
+			</form>
+		</div>
+	</div>
+
+
+	<div class='right'>
+	<?=$this -> heure.":".$this -> minutes ?>
+	<br>
+	<?=$this -> currentTemperature ?>F&deg;
+	<?=$this -> currentWeather ?> <a onclick='showTomorrow();'>Tomorrow</a>
+		<div id='weathertomorrow' style="display:none;">
+		<a onclick='closeTomorrow();' >close</a><br>
+		<?=$this -> tomorrowDay.'.  '?>
+		
+		<img src="<?=$this -> tomorrowIcon?>" /><br>
+		<?=$this -> tomorrowWeather?>
+		<br>min: <?=$this -> tomorrowLow ?>F&deg;
+		max: <?=$this -> tomorrowHigh?>F&deg;
+		</div>
+		
+		
+		
+	<div id="clear">
+	</div>
+	</div>	
+</div>
+
+

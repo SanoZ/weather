@@ -1,0 +1,28 @@
+<?php
+/**
+ * Tag
+ * Implements a tag library for building views in PHP
+ * 
+ *      @author	sandrine
+ */
+class Common_Misc {
+	public static function myUrlEncode($url) {
+		
+  		$url = str_replace('|', '--', $url); 
+	  	$url = str_replace('\'', '', $url);   
+	    $url = str_replace('/', '-', $url);  
+	    $url = str_replace('$', 'S', $url);  
+	    $url = str_replace('#', '', $url);   
+	    $url = str_replace('(', '', $url);   
+	    $url = str_replace(')', '', $url);  
+	    $url = str_replace('&amp;', 'and', $url);   
+	    $url = str_replace('&', 'and', $url);   
+
+	    $url = str_replace('%', '', $url);  
+	    $url = str_replace('?', '', $url);   
+	    $url = str_replace(' ', '-', $url); 
+	    $url = str_replace('+', '-', $url);   
+
+	    return trim($url,'-');
+	}
+}

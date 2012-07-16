@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/repos/!svn/ver/5265/YPEX/trunk/application/views/scripts/error
+END
+403.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/!svn/ver/5265/YPEX/trunk/application/views/scripts/error/403.phtml
+END
+404.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/!svn/ver/5265/YPEX/trunk/application/views/scripts/error/404.phtml
+END
+error.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/repos/!svn/ver/5265/YPEX/trunk/application/views/scripts/error/error.phtml
+END
